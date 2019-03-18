@@ -28,9 +28,13 @@ Aviation crashes dataset
 | Summary:	    | Brief description of the accident and cause if known |
 
 ### Questions to be answered: 
-```
-to be defined... some are in Notes doc in Google Drive
-````
+
+* Fatalities before and after hitting the ground
+* Text analysis: find causes in description text
+* (Advanced) Text analysis - sentiment analysis
+* Where do most planes crash (by time period)? Heat map with locations - period of 5-10 years? - change over time - animation/several time periods?
+* Separate into sections? Location by continent, night/day flight, type of aircraft etc
+
 
 
 ### Assignment
