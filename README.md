@@ -1,5 +1,5 @@
 # BigDataProjectDIT
-Data Visualization Project using Python and other tools
+Data Visualization Project using Python (Anaconda distribution, GeoPy) and other tools (Google FusionTables)
 
 | Deliverable | Due date | Details | Grading |
 |-------------|----------|---------|---------|
@@ -27,6 +27,12 @@ Aviation crashes dataset
 | Ground:	    | Total killed on the ground |
 | Summary:	    | Brief description of the accident and cause if known |
 
+#### Added attributes to dataset
+| New Column Name | Summary |
+|---------------|------------------------------------------------------|
+| Latitude        | Coordinates collected using GeoPy and Bing maps API|
+| Longitude       | Coordinates collected using GeoPy and Bing maps API|
+
 ### Questions to be answered: 
 
 * Fatalities before and after hitting the ground
@@ -34,6 +40,7 @@ Aviation crashes dataset
 * (Advanced) Text analysis - sentiment analysis
 * Where do most planes crash (by time period)? Heat map with locations - period of 5-10 years? - change over time - animation/several time periods?
 * Separate into sections? Location by continent, night/day flight, type of aircraft etc
+* Frequency of plane crashes by decade(s)
 
 
 
