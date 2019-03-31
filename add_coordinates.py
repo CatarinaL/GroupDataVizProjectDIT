@@ -4,7 +4,7 @@ from geopy.geocoders import Bing
 import time
 
 def clean_locations():
-     with open('dataset/location.csv') as csvDataFile:
+     with open('dataset/locations_exported.csv') as csvDataFile:
         with open('dataset/location_clean.csv', 'w') as csv_out:
             writer = csv.writer(csv_out, delimiter=' ',
                                 quotechar='"', quoting=csv.QUOTE_MINIMAL)
@@ -22,9 +22,9 @@ def add_coordinates():
     geolocator = Bing(api_key="AjqWLHWVCEHcB9V7sO2ubMzKO7P1eARR-Zl6SBe0RmACT5RFMer3p6q6iJxiQ2Z9",
                       timeout=3)
     # todo: add delay, api requests timing out
-    with open('dataset/location_clean.csv') as csvDataFile:
+    with open('dataset/locations_export.csv') as csvDataFile:
         csvReader = csv.reader(csvDataFile)
-        with open('dataset/location_coordinates.csv', 'w') as csv_out:
+        with open('dataset/location_coordinates_complete.csv', 'w') as csv_out:
             writer = csv.writer(csv_out, delimiter=',',
                                 quotechar='"', quoting=csv.QUOTE_MINIMAL)
             csvReader = csv.reader(csvDataFile)
@@ -32,15 +32,17 @@ def add_coordinates():
             for row in csvReader:
                 if row_count % 100 == 0:
                     print(f"sleepy time {row_count}") #just to check progress while it's running
-                time.sleep(1)
+                #time.sleep(1)
                 row_count += 1
                 if row:
-                    location = geolocator.geocode(query=str(row[0]))
-
-                    if location is not None:
-                        new_row = [row[0], location.latitude, location.longitude]
+                    if not row[1]:
+                        location = geolocator.geocode(query=str(row[0]))
+                        if location is not None:
+                            new_row = [row[0], location.latitude, location.longitude]
+                        else:
+                            new_row = row
                     else:
-                        new_row = [row[0], "", ""]
+                        new_row = row
                 else:
                     new_row = ["", "", ""]
                 writer.writerow(new_row)
